@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateDnsZones_arpantest_com_name": {
+            "value": "arpantest.com"
+        },
+        "virtualNetworks_ArpanVnet02_externalid": {
+            "value": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourceGroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet02"
+        },
+        "virtualNetworks_ArpanVnet03_externalid": {
+            "value": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourceGroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet03"
+        },
+        "virtualNetworks_ArpanVnet01_externalid": {
+            "value": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourceGroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet01"
+        }
+    }
+}

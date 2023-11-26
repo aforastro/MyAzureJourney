@@ -100,7 +100,27 @@
                         "action": {
                             "type": "Dnat"
                         },
-                        "rules": [],
+                        "rules": [
+                            {
+                                "ruleType": "NatRule",
+                                "name": "rdp",
+                                "translatedFqdn": "testvm01.arpantest.com",
+                                "translatedPort": "3389",
+                                "ipProtocols": [
+                                    "TCP"
+                                ],
+                                "sourceAddresses": [
+                                    "*"
+                                ],
+                                "sourceIpGroups": [],
+                                "destinationAddresses": [
+                                    "20.225.176.11"
+                                ],
+                                "destinationPorts": [
+                                    "33899"
+                                ]
+                            }
+                        ],
                         "name": "AllowRDP",
                         "priority": 100
                     }

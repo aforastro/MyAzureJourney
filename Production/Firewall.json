@@ -15,51 +15,51 @@
             "type": "String"
         },
         "publicIPAddresses_Arpanpip01FWmgmt_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip01FWmgmt",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip01FWmgmt",
             "type": "String"
         },
         "virtualNetworks_ArpanVnet01_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet01",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet01",
             "type": "String"
         },
         "publicIPAddresses_Arpanpip01FW_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip01FW",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip01FW",
             "type": "String"
         },
         "firewallPolicies_fw01southcentralus_policy_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01southcentralus-policy",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01southcentralus-policy",
             "type": "String"
         },
         "publicIPAddresses_Arpanpip02FWmgmt_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip02FWmgmt",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip02FWmgmt",
             "type": "String"
         },
         "virtualNetworks_ArpanVnet02_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet02",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet02",
             "type": "String"
         },
         "publicIPAddresses_Arpanpip02FW_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip02FW",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip02FW",
             "type": "String"
         },
         "firewallPolicies_fw01centralIndia_policy_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01centralIndia-policy",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01centralIndia-policy",
             "type": "String"
         },
         "publicIPAddresses_Arpanpip03FWmgmt_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip03FWmgmt",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip03FWmgmt",
             "type": "String"
         },
         "virtualNetworks_ArpanVnet03_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet03",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet03",
             "type": "String"
         },
         "publicIPAddresses_Arpanpip03FW_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip03FW",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip03FW",
             "type": "String"
         },
         "firewallPolicies_fw01eastus_policy_externalid": {
-            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01eastus-policy",
+            "defaultValue": "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/1-3884bbed-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01eastus-policy",
             "type": "String"
         }
     },

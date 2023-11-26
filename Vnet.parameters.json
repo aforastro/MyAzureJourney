@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "routeTables_Arpanrt01_name": {
+            "value": "Arpanrt01"
+        },
+        "routeTables_Arpanrt02_name": {
+            "value": "Arpanrt02"
+        },
+        "routeTables_Arpanrt03_name": {
+            "value": "Arpanrt03"
+        },
+        "storageAccounts_testarpan2_name": {
+            "value": "testarpan2"
+        },
+        "virtualNetworks_ArpanVnet01_name": {
+            "value": "ArpanVnet01"
+        },
+        "virtualNetworks_ArpanVnet02_name": {
+            "value": "ArpanVnet02"
+        },
+        "virtualNetworks_ArpanVnet03_name": {
+            "value": "ArpanVnet03"
+        },
+        "firewallPolicies_fw01centralIndia_policy_name": {
+            "value": "fw01centralIndia-policy"
+        },
+        "firewallPolicies_fw01southcentralus_policy_name": {
+            "value": "fw01southcentralus-policy"
+        }
+    }
+}

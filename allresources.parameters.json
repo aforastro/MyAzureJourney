@@ -1,0 +1,93 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "routeTables_Arpanrt01_name": {
+            "value": "Arpanrt01"
+        },
+        "routeTables_Arpanrt02_name": {
+            "value": "Arpanrt02"
+        },
+        "routeTables_Arpanrt03_name": {
+            "value": "Arpanrt03"
+        },
+        "virtualMachines_TestVM01_name": {
+            "value": "TestVM01"
+        },
+        "azureFirewalls_Arpanfw01_name": {
+            "value": "Arpanfw01"
+        },
+        "azureFirewalls_Arpanfw02_name": {
+            "value": "Arpanfw02"
+        },
+        "azureFirewalls_Arpanfw03_name": {
+            "value": "Arpanfw03"
+        },
+        "storageAccounts_testarpan2_name": {
+            "value": "testarpan2"
+        },
+        "networkInterfaces_testvm013_name": {
+            "value": "testvm013"
+        },
+        "virtualNetworks_ArpanVnet01_name": {
+            "value": "ArpanVnet01"
+        },
+        "virtualNetworks_ArpanVnet02_name": {
+            "value": "ArpanVnet02"
+        },
+        "virtualNetworks_ArpanVnet03_name": {
+            "value": "ArpanVnet03"
+        },
+        "publicIPAddresses_Arpanpip01_name": {
+            "value": "Arpanpip01"
+        },
+        "publicIPAddresses_Arpanpip02_name": {
+            "value": "Arpanpip02"
+        },
+        "publicIPAddresses_Arpanpip03_name": {
+            "value": "Arpanpip03"
+        },
+        "privateDnsZones_arpantest_com_name": {
+            "value": "arpantest.com"
+        },
+        "publicIPAddresses_Arpanpip01FW_name": {
+            "value": "Arpanpip01FW"
+        },
+        "publicIPAddresses_Arpanpip02FW_name": {
+            "value": "Arpanpip02FW"
+        },
+        "publicIPAddresses_Arpanpip03FW_name": {
+            "value": "Arpanpip03FW"
+        },
+        "networkSecurityGroups_ArpanNsg_01_name": {
+            "value": "ArpanNsg-01"
+        },
+        "firewallPolicies_fw01eastus_policy_name": {
+            "value": "fw01eastus-policy"
+        },
+        "publicIPAddresses_Arpanpip01FWmgmt_name": {
+            "value": "Arpanpip01FWmgmt"
+        },
+        "publicIPAddresses_Arpanpip02FWmgmt_name": {
+            "value": "Arpanpip02FWmgmt"
+        },
+        "publicIPAddresses_Arpanpip03FWmgmt_name": {
+            "value": "Arpanpip03FWmgmt"
+        },
+        "firewallPolicies_fw01centralIndia_policy_name": {
+            "value": "fw01centralIndia-policy"
+        },
+        "firewallPolicies_fw01southcentralus_policy_name": {
+            "value": "fw01southcentralus-policy"
+        },
+        "routeTables_c7767db2_8b10_419b_89b2_29b120318004_externalid": {
+            "value": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourceGroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/routeTables/c7767db2-8b10-419b-89b2-29b120318004"
+        },
+        "routeTables_f1e11ff8_78f8_487a_8d7b_49d545ff3944_externalid": {
+            "value": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourceGroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/routeTables/f1e11ff8-78f8-487a-8d7b-49d545ff3944"
+        },
+        "routeTables_bdb49ebd_c83a_4d5b_b7b4_91693cdbe266_externalid": {
+            "value": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourceGroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/routeTables/bdb49ebd-c83a-4d5b-b7b4-91693cdbe266"
+        }
+    }
+}

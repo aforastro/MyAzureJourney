@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "firewallPolicies_fw01eastus_policy_name": {
+            "value": null
+        },
+        "firewallPolicies_fw01centralIndia_policy_name": {
+            "value": null
+        },
+        "firewallPolicies_fw01southcentralus_policy_name": {
+            "value": null
+        }
+    }
+}

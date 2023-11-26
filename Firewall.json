@@ -1,0 +1,207 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "azureFirewalls_Arpanfw01_name": {
+            "defaultValue": "Arpanfw01",
+            "type": "String"
+        },
+        "azureFirewalls_Arpanfw02_name": {
+            "defaultValue": "Arpanfw02",
+            "type": "String"
+        },
+        "azureFirewalls_Arpanfw03_name": {
+            "defaultValue": "Arpanfw03",
+            "type": "String"
+        },
+        "publicIPAddresses_Arpanpip01FWmgmt_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip01FWmgmt",
+            "type": "String"
+        },
+        "virtualNetworks_ArpanVnet01_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet01",
+            "type": "String"
+        },
+        "publicIPAddresses_Arpanpip01FW_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip01FW",
+            "type": "String"
+        },
+        "firewallPolicies_fw01southcentralus_policy_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01southcentralus-policy",
+            "type": "String"
+        },
+        "publicIPAddresses_Arpanpip02FWmgmt_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip02FWmgmt",
+            "type": "String"
+        },
+        "virtualNetworks_ArpanVnet02_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet02",
+            "type": "String"
+        },
+        "publicIPAddresses_Arpanpip02FW_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip02FW",
+            "type": "String"
+        },
+        "firewallPolicies_fw01centralIndia_policy_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01centralIndia-policy",
+            "type": "String"
+        },
+        "publicIPAddresses_Arpanpip03FWmgmt_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip03FWmgmt",
+            "type": "String"
+        },
+        "virtualNetworks_ArpanVnet03_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet03",
+            "type": "String"
+        },
+        "publicIPAddresses_Arpanpip03FW_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/publicIPAddresses/Arpanpip03FW",
+            "type": "String"
+        },
+        "firewallPolicies_fw01eastus_policy_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourcegroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/firewallPolicies/fw01eastus-policy",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/azureFirewalls",
+            "apiVersion": "2023-05-01",
+            "name": "[parameters('azureFirewalls_Arpanfw01_name')]",
+            "location": "southcentralus",
+            "properties": {
+                "sku": {
+                    "name": "AZFW_VNet",
+                    "tier": "Basic"
+                },
+                "threatIntelMode": "Alert",
+                "additionalProperties": {},
+                "managementIpConfiguration": {
+                    "name": "Arpanpip01FWmgmt",
+                    "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_Arpanfw01_name')), '/azureFirewallIpConfigurations/Arpanpip01FWmgmt')]",
+                    "properties": {
+                        "publicIPAddress": {
+                            "id": "[parameters('publicIPAddresses_Arpanpip01FWmgmt_externalid')]"
+                        },
+                        "subnet": {
+                            "id": "[concat(parameters('virtualNetworks_ArpanVnet01_externalid'), '/subnets/AzureFirewallManagementSubnet')]"
+                        }
+                    }
+                },
+                "ipConfigurations": [
+                    {
+                        "name": "Arpanpip01FW",
+                        "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_Arpanfw01_name')), '/azureFirewallIpConfigurations/Arpanpip01FW')]",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIPAddresses_Arpanpip01FW_externalid')]"
+                            },
+                            "subnet": {
+                                "id": "[concat(parameters('virtualNetworks_ArpanVnet01_externalid'), '/subnets/AzureFirewallSubnet')]"
+                            }
+                        }
+                    }
+                ],
+                "networkRuleCollections": [],
+                "applicationRuleCollections": [],
+                "natRuleCollections": [],
+                "firewallPolicy": {
+                    "id": "[parameters('firewallPolicies_fw01southcentralus_policy_externalid')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/azureFirewalls",
+            "apiVersion": "2023-05-01",
+            "name": "[parameters('azureFirewalls_Arpanfw02_name')]",
+            "location": "centralindia",
+            "properties": {
+                "sku": {
+                    "name": "AZFW_VNet",
+                    "tier": "Basic"
+                },
+                "threatIntelMode": "Alert",
+                "additionalProperties": {},
+                "managementIpConfiguration": {
+                    "name": "Arpanpip01FWmgmt",
+                    "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_Arpanfw02_name')), '/azureFirewallIpConfigurations/Arpanpip01FWmgmt')]",
+                    "properties": {
+                        "publicIPAddress": {
+                            "id": "[parameters('publicIPAddresses_Arpanpip02FWmgmt_externalid')]"
+                        },
+                        "subnet": {
+                            "id": "[concat(parameters('virtualNetworks_ArpanVnet02_externalid'), '/subnets/AzureFirewallManagementSubnet')]"
+                        }
+                    }
+                },
+                "ipConfigurations": [
+                    {
+                        "name": "Arpanpip01FW",
+                        "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_Arpanfw02_name')), '/azureFirewallIpConfigurations/Arpanpip01FW')]",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIPAddresses_Arpanpip02FW_externalid')]"
+                            },
+                            "subnet": {
+                                "id": "[concat(parameters('virtualNetworks_ArpanVnet02_externalid'), '/subnets/AzureFirewallSubnet')]"
+                            }
+                        }
+                    }
+                ],
+                "networkRuleCollections": [],
+                "applicationRuleCollections": [],
+                "natRuleCollections": [],
+                "firewallPolicy": {
+                    "id": "[parameters('firewallPolicies_fw01centralIndia_policy_externalid')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/azureFirewalls",
+            "apiVersion": "2023-05-01",
+            "name": "[parameters('azureFirewalls_Arpanfw03_name')]",
+            "location": "eastus",
+            "properties": {
+                "sku": {
+                    "name": "AZFW_VNet",
+                    "tier": "Basic"
+                },
+                "threatIntelMode": "Alert",
+                "additionalProperties": {},
+                "managementIpConfiguration": {
+                    "name": "Arpanpip01FWmgmt",
+                    "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_Arpanfw03_name')), '/azureFirewallIpConfigurations/Arpanpip01FWmgmt')]",
+                    "properties": {
+                        "publicIPAddress": {
+                            "id": "[parameters('publicIPAddresses_Arpanpip03FWmgmt_externalid')]"
+                        },
+                        "subnet": {
+                            "id": "[concat(parameters('virtualNetworks_ArpanVnet03_externalid'), '/subnets/AzureFirewallManagementSubnet')]"
+                        }
+                    }
+                },
+                "ipConfigurations": [
+                    {
+                        "name": "Arpanpip01FW",
+                        "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_Arpanfw03_name')), '/azureFirewallIpConfigurations/Arpanpip01FW')]",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIPAddresses_Arpanpip03FW_externalid')]"
+                            },
+                            "subnet": {
+                                "id": "[concat(parameters('virtualNetworks_ArpanVnet03_externalid'), '/subnets/AzureFirewallSubnet')]"
+                            }
+                        }
+                    }
+                ],
+                "networkRuleCollections": [],
+                "applicationRuleCollections": [],
+                "natRuleCollections": [],
+                "firewallPolicy": {
+                    "id": "[parameters('firewallPolicies_fw01eastus_policy_externalid')]"
+                }
+            }
+        }
+    ]
+}

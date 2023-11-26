@@ -1,0 +1,143 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_TestVM01_name": {
+            "defaultValue": "TestVM01",
+            "type": "String"
+        },
+        "networkInterfaces_testvm013_name": {
+            "defaultValue": "testvm013",
+            "type": "String"
+        },
+        "virtualNetworks_ArpanVnet01_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourceGroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet01",
+            "type": "String"
+        },
+        "networkSecurityGroups_ArpanNsg_01_externalid": {
+            "defaultValue": "/subscriptions/28e1e42a-4438-4c30-9a5f-7d7b488fd883/resourceGroups/1-7ab825c5-playground-sandbox/providers/Microsoft.Network/networkSecurityGroups/ArpanNsg-01",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2023-05-01",
+            "name": "[parameters('networkInterfaces_testvm013_name')]",
+            "location": "southcentralus",
+            "kind": "Regular",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_testvm013_name')), '/ipConfigurations/ipconfig1')]",
+                        "etag": "W/\"73f0a773-0a79-4350-b657-fc936cc825e8\"",
+                        "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.198.6.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[concat(parameters('virtualNetworks_ArpanVnet01_externalid'), '/subnets/ArpanVnet01-Primary')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableAcceleratedNetworking": true,
+                "enableIPForwarding": false,
+                "disableTcpStateTracking": false,
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_ArpanNsg_01_externalid')]"
+                },
+                "nicType": "Standard",
+                "auxiliaryMode": "None",
+                "auxiliarySku": "None"
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2023-03-01",
+            "name": "[parameters('virtualMachines_TestVM01_name')]",
+            "location": "southcentralus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_testvm013_name'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D2s_v3"
+                },
+                "additionalCapabilities": {
+                    "hibernationEnabled": false
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "microsoftwindowsdesktop",
+                        "offer": "windows-11",
+                        "sku": "win11-22h2-pro",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_TestVM01_name'), '_OsDisk_1_b0d99ff15b76452c83ad0e2d8f15062f')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Premium_LRS",
+                            "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_TestVM01_name'), '_OsDisk_1_b0d99ff15b76452c83ad0e2d8f15062f'))]"
+                        },
+                        "deleteOption": "Delete",
+                        "diskSizeGB": 127
+                    },
+                    "dataDisks": [],
+                    "diskControllerType": "SCSI"
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_TestVM01_name')]",
+                    "adminUsername": "aforastro",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true,
+                        "patchSettings": {
+                            "patchMode": "AutomaticByOS",
+                            "assessmentMode": "ImageDefault",
+                            "enableHotpatching": false
+                        },
+                        "enableVMAgentPlatformUpdates": false
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true,
+                    "requireGuestProvisionSignal": true
+                },
+                "securityProfile": {
+                    "uefiSettings": {
+                        "secureBootEnabled": true,
+                        "vTpmEnabled": true
+                    },
+                    "securityType": "TrustedLaunch"
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_testvm013_name'))]",
+                            "properties": {
+                                "deleteOption": "Detach"
+                            }
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true
+                    }
+                },
+                "licenseType": "Windows_Client"
+            }
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_TestVM02_name": {
+            "value": "TestVM02"
+        },
+        "networkInterfaces_TestVM023_name": {
+            "value": "ArpanNic-02"
+        },
+        "virtualNetworks_ArpanVnet02_externalid": {
+            "value": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet02"
+        },
+        "networkSecurityGroups_ArpanNsg_02_externalid": {
+            "value": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/networkSecurityGroups/ArpanNsg-02"
+        }
+    }
+}

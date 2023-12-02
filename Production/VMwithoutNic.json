@@ -1,0 +1,100 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_TestVM03_name": {
+            "defaultValue": "TestVM03",
+            "type": "String"
+        },
+        "networkInterfaces_TestVM033_name": {
+            "defaultValue": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/networkInterfaces/ArpanNic-03",
+            "type": "String"
+        },
+        "virtualNetworks_ArpanVnet03_externalid": {
+            "defaultValue": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet03",
+            "type": "String"
+        },
+        "networkSecurityGroups_ArpanNsg_03_externalid": {
+            "defaultValue": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/networkSecurityGroups/ArpanNsg-03",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2023-03-01",
+            "name": "[parameters('virtualMachines_TestVM03_name')]",
+            "location": "eastus",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D2s_v3"
+                },
+                "additionalCapabilities": {
+                    "hibernationEnabled": false
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "microsoftwindowsdesktop",
+                        "offer": "windows-11",
+                        "sku": "win11-22h2-pro",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_TestVM03_name'), '_osdisk_TestVM03')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Premium_LRS"
+                        },
+                        "deleteOption": "Delete",
+                        "diskSizeGB": 127
+                    },
+                    "dataDisks": [],
+                    "diskControllerType": "SCSI"
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_TestVM03_name')]",
+                    "adminUsername": "aforastro",
+                    "adminpassword": "Nestaway@2023",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true,
+                        "patchSettings": {
+                            "patchMode": "AutomaticByOS",
+                            "assessmentMode": "ImageDefault",
+                            "enableHotpatching": false
+                        },
+                        "enableVMAgentPlatformUpdates": false
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "securityProfile": {
+                    "uefiSettings": {
+                        "secureBootEnabled": true,
+                        "vTpmEnabled": true
+                    },
+                    "securityType": "TrustedLaunch"
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[parameters('networkInterfaces_TestVM033_name')]",
+                            "properties": {
+                                "deleteOption": "Detach"
+                            }
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true
+                    }
+                },
+                "licenseType": "Windows_Client"
+            }
+        }
+    ]
+}

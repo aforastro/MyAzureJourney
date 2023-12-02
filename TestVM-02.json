@@ -2,20 +2,20 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "virtualMachines_TestVM01_name": {
-            "defaultValue": "TestVM01",
+        "virtualMachines_TestVM02_name": {
+            "defaultValue": "TestVM02",
             "type": "String"
         },
-        "networkInterfaces_testvm013_name": {
-            "defaultValue": "ArpanNic-01",
+        "networkInterfaces_TestVM023_name": {
+            "defaultValue": "ArpanNic-02",
             "type": "String"
         },
-        "virtualNetworks_ArpanVnet01_externalid": {
-            "defaultValue": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet01",
+        "virtualNetworks_ArpanVnet02_externalid": {
+            "defaultValue": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/virtualNetworks/ArpanVnet02",
             "type": "String"
         },
-        "networkSecurityGroups_ArpanNsg_01_externalid": {
-            "defaultValue": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/networkSecurityGroups/ArpanNsg-01",
+        "networkSecurityGroups_ArpanNsg_02_externalid": {
+            "defaultValue": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/1-d629ecd7-playground-sandbox/providers/Microsoft.Network/networkSecurityGroups/ArpanNsg-02",
             "type": "String"
         }
     },
@@ -24,22 +24,21 @@
         {
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2023-05-01",
-            "name": "[parameters('networkInterfaces_testvm013_name')]",
-            "location": "southcentralus",
+            "name": "[parameters('networkInterfaces_TestVM023_name')]",
+            "location": "CentralIndia",
             "kind": "Regular",
             "properties": {
                 "ipConfigurations": [
                     {
                         "name": "ipconfig1",
-                        "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_testvm013_name')), '/ipConfigurations/ipconfig1')]",
+                        "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_TestVM023_name')), '/ipConfigurations/ipconfig1')]",
                         "etag": "W/\"73f0a773-0a79-4350-b657-fc936cc825e8\"",
                         "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
                         "properties": {
                             "provisioningState": "Succeeded",
-                            "privateIPAddress": "10.198.6.4",
                             "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[concat(parameters('virtualNetworks_ArpanVnet01_externalid'), '/subnets/ArpanVnet01-Primary')]"
+                                "id": "[concat(parameters('virtualNetworks_ArpanVnet02_externalid'), '/subnets/ArpanVnet02-Primary')]"
                             },
                             "primary": true,
                             "privateIPAddressVersion": "IPv4"
@@ -53,7 +52,7 @@
                 "enableIPForwarding": false,
                 "disableTcpStateTracking": false,
                 "networkSecurityGroup": {
-                    "id": "[parameters('networkSecurityGroups_ArpanNsg_01_externalid')]"
+                    "id": "[parameters('networkSecurityGroups_ArpanNsg_02_externalid')]"
                 },
                 "nicType": "Standard",
                 "auxiliaryMode": "None",
@@ -63,10 +62,10 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2023-03-01",
-            "name": "[parameters('virtualMachines_TestVM01_name')]",
+            "name": "[parameters('virtualMachines_TestVM02_name')]",
             "location": "southcentralus",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_testvm013_name'))]"
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_TestVM023_name'))]"
             ],
             "properties": {
                 "hardwareProfile": {
@@ -84,7 +83,7 @@
                     },
                     "osDisk": {
                         "osType": "Windows",
-                        "name": "[concat(parameters('virtualMachines_TestVM01_name'), '_OsDisk_1_b0d99ff15b76452c83ad0e2d8f15062f')]",
+                        "name": "[concat(parameters('virtualMachines_TestVM02_name'), '_OsDisk_1_b0d99ff15b76452c83ad0e2d8f15062f')]",
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
@@ -97,8 +96,9 @@
                     "diskControllerType": "SCSI"
                 },
                 "osProfile": {
-                    "computerName": "[parameters('virtualMachines_TestVM01_name')]",
+                    "computerName": "[parameters('virtualMachines_TestVM02_name')]",
                     "adminUsername": "aforastro",
+					"adminpassword":"Nestaway@2023",
                     "windowsConfiguration": {
                         "provisionVMAgent": true,
                         "enableAutomaticUpdates": true,
@@ -110,8 +110,7 @@
                         "enableVMAgentPlatformUpdates": false
                     },
                     "secrets": [],
-                    "allowExtensionOperations": true,
-                    "requireGuestProvisionSignal": false
+                    "allowExtensionOperations": true
                 },
                 "securityProfile": {
                     "uefiSettings": {
@@ -123,7 +122,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_testvm013_name'))]",
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_TestVM023_name'))]",
                             "properties": {
                                 "deleteOption": "Detach"
                             }
